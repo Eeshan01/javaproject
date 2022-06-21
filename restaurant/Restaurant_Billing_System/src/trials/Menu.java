@@ -105,7 +105,6 @@ public class Menu extends JFrame implements ActionListener{
 		      panel.add(pane);
 		      f.add(panel);
 		      f.setSize(500, 250);
-		      f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		      f.setVisible(true);
 		    
 		    } catch(SQLException e1) {
