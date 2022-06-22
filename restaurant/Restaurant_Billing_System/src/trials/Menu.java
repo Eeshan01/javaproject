@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -93,6 +95,8 @@ public class Menu extends JFrame implements ActionListener{
 		        data[i][0] = name;
 		        data[i][1] = price;
 		        i++;
+		        
+		       
 		      }
 		    
 		      DefaultTableModel model = new DefaultTableModel(data, columns);
@@ -106,12 +110,14 @@ public class Menu extends JFrame implements ActionListener{
 		      f.add(panel);
 		      f.setSize(500, 250);
 		      f.setVisible(true);
-		    
+		      
+		      
+		      
 		    } catch(SQLException e1) {
 		      e1.printStackTrace();
 		    }
 		  }
 		
 	}
-	
+ 
 }
