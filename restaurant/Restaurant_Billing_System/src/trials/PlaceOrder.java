@@ -32,9 +32,8 @@ public class PlaceOrder extends JFrame implements ActionListener{
 	JTextField foodName;
 	JTextField foodAmount;
 	JLabel verifyLabel;
-	
 
-	int grandtotal=0;
+	static int grandtotal=0;
 	
 	
 	PlaceOrder(){
@@ -108,7 +107,7 @@ public class PlaceOrder extends JFrame implements ActionListener{
 					pstmt.setString(1, foodName.getText());
 					
 					ResultSet rs = pstmt.executeQuery();
-
+					
 					
 					while (rs.next()) {
 						itemamt=Integer.parseInt(foodAmount.getText());
@@ -122,6 +121,12 @@ public class PlaceOrder extends JFrame implements ActionListener{
 					JFrame f=new JFrame();  
 				    JOptionPane.showMessageDialog(f,grandtotal);  
 					
+				    Menu MenuOb = new Menu();
+				    MenuOb.setVisible(true);
+					
+					
+					 ConfirmOrder co = new ConfirmOrder();
+					 co.totalprice.setText(String.valueOf(grandtotal));
 					
 					
 				}

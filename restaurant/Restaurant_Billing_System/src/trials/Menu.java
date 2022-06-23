@@ -27,6 +27,7 @@ public class Menu extends JFrame implements ActionListener{
 	JButton backButton;
 	JButton printBill;
 	JButton showMenu;
+	String value;
 	
 	Menu(){
 		backButton = new JButton();
@@ -65,11 +66,8 @@ public class Menu extends JFrame implements ActionListener{
 		if(e.getSource()==backButton) {
 			MainFrame MainFrameOb = new MainFrame();
 			MainFrameOb.setVisible(true);
-		}
 		
-		else if(e.getSource() == printBill) {
-			PlaceOrder PlaceOrderOb = new PlaceOrder();
-			PlaceOrderOb.setVisible(true);
+
 		}
 		else if(e.getSource() == showMenu) {
 		    try 
@@ -111,13 +109,36 @@ public class Menu extends JFrame implements ActionListener{
 		      f.setSize(500, 250);
 		      f.setVisible(true);
 		      
+		      table.addMouseListener(new java.awt.event.MouseAdapter() {
+		    	    @Override
+		    	    public void mouseClicked(java.awt.event.MouseEvent evt) {
+		    	        int row = table.rowAtPoint(evt.getPoint());
+		    	        int col = table.columnAtPoint(evt.getPoint());
+		    	        
+		    	        int colval = 0;
+		    	        int rowval = table.getSelectedRow();
+		    	        String value = table.getModel().getValueAt(rowval, colval).toString();
+		    	        
+		    	        if (row >= 0 && col >= 0) {
+		    	            
+		    				PlaceOrder PlaceOrderOb = new PlaceOrder();
+		    				PlaceOrderOb.setVisible(true);   
+		    				PlaceOrderOb.foodName.setText(value);
+
+		    	        }
+		    	    }
+		    	});
+		      
 		      
 		      
 		    } catch(SQLException e1) {
 		      e1.printStackTrace();
 		    }
 		  }
-		
+		else if(e.getSource() == printBill) {
+			ConfirmOrder co = new ConfirmOrder();
+			co.setVisible(true);
+		}
 	}
  
 }
