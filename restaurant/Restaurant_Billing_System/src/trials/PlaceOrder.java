@@ -24,7 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
+import java.util.*;
 public class PlaceOrder extends JFrame implements ActionListener{
 	JButton backButton;
 	JButton addBtn;
@@ -32,7 +32,9 @@ public class PlaceOrder extends JFrame implements ActionListener{
 	JTextField foodName;
 	JTextField foodAmount;
 	JLabel verifyLabel;
-
+	static ArrayList<String> fn = new ArrayList<>();
+	static ArrayList<Integer> fq = new ArrayList<>();
+	
 	static int grandtotal=0;
 	
 	
@@ -55,8 +57,8 @@ public class PlaceOrder extends JFrame implements ActionListener{
 		foodName = new JTextField();
 		foodName.setBounds(600, 150, 200, 80);
 		
-		JLabel fP = new JLabel("Food Amount: ");
-		fP.setBounds(480, 250, 200, 100);
+		JLabel fP = new JLabel("Quantity :");
+		fP.setBounds(490, 250, 200, 100);
 		
 		foodAmount = new JTextField();
 		foodAmount.setBounds(600, 250, 200, 80);
@@ -111,6 +113,8 @@ public class PlaceOrder extends JFrame implements ActionListener{
 					
 					while (rs.next()) {
 						itemamt=Integer.parseInt(foodAmount.getText());
+						fq.add(itemamt);
+						fn.add(foodName.getText());
 						price=Integer.parseInt(rs.getString(1));
 						total = price * itemamt;
 					}
@@ -125,8 +129,6 @@ public class PlaceOrder extends JFrame implements ActionListener{
 				    MenuOb.setVisible(true);
 					
 					
-					 ConfirmOrder co = new ConfirmOrder();
-					 co.totalprice.setText(String.valueOf(grandtotal));
 					
 					
 				}

@@ -22,7 +22,12 @@ public class ConfirmOrder extends JFrame implements ActionListener{
 		backButton.setBounds(10,20,100,50);
 		backButton.addActionListener(this);
 		
-		JLabel fN = new JLabel("The price : ");
+		while(!PlaceOrder.fn.isEmpty()) {
+			System.out.println(PlaceOrder.fn.remove(0));
+			System.out.println(PlaceOrder.fq.remove(0));
+		}
+		
+		JLabel fN = new JLabel("Total Cost : ");
 		fN.setBounds(480, 150, 200, 100);
 		
 		totalprice = new JTextField();
@@ -42,6 +47,7 @@ public class ConfirmOrder extends JFrame implements ActionListener{
 		this.add(fN);
 		this.add(totalprice);
 		this.add(verifyLabel);
+		totalprice.setText(String.valueOf(PlaceOrder.grandtotal));
 		
 	}
 
@@ -49,9 +55,11 @@ public class ConfirmOrder extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==backButton) {
-			
 			MainFrame MainFrameOb = new MainFrame();
 			MainFrameOb.setVisible(true);
+			PlaceOrder.grandtotal = 0;
+			PlaceOrder.fn.clear();
+			PlaceOrder.fq.clear();
 		}
 	}
 }

@@ -27,6 +27,7 @@ public class Menu extends JFrame implements ActionListener{
 	JButton backButton;
 	JButton printBill;
 	JButton showMenu;
+	JButton resetOrder;
 	String value;
 	
 	Menu(){
@@ -39,9 +40,14 @@ public class Menu extends JFrame implements ActionListener{
 		printBill.setBounds(1050,20,120,50);
 		printBill.addActionListener(this);
 		showMenu = new JButton();
-		showMenu.setText("Display Menu");
+		showMenu.setText("Select the item");
 		showMenu.setBounds(550,250,120,50);
 		showMenu.addActionListener(this);
+		resetOrder = new JButton();
+		resetOrder.setText("Reset");
+		resetOrder.setBounds(550,350,120,50);
+		resetOrder.addActionListener(this);
+
 		
 		JLabel label1 = new JLabel("Please select the item from the Menu");
 		label1.setBounds(400, 30, 550, 100);
@@ -57,7 +63,7 @@ public class Menu extends JFrame implements ActionListener{
 		this.add(printBill);
 		this.add(label1);
 		this.add(showMenu);
-		
+		this.add(resetOrder);
 		
 	}
 
@@ -139,6 +145,13 @@ public class Menu extends JFrame implements ActionListener{
 			ConfirmOrder co = new ConfirmOrder();
 			co.setVisible(true);
 		}
+		
+		else if(e.getSource() == resetOrder) {
+			PlaceOrder.grandtotal = 0;
+			PlaceOrder.fn.clear();
+			PlaceOrder.fq.clear();
+		}
+		
 	}
  
 }
